@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Idunno/static/css/main.33a754ad.css",
+    "main.js": "/Idunno/static/js/main.fbd88ffa.js",
+    "index.html": "/Idunno/index.html",
+    "main.33a754ad.css.map": "/Idunno/static/css/main.33a754ad.css.map",
+    "main.fbd88ffa.js.map": "/Idunno/static/js/main.fbd88ffa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.33a754ad.css",
+    "static/js/main.fbd88ffa.js"
+  ]
+}
