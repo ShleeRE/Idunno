@@ -1,14 +1,13 @@
 import "./App.css"
+import LoginPage from "./Components/LoginPage"
+import pizza from "./Assets/pizza.mp4"
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>
-          git hub test
-        </h1>
-      </header>
+      <LoginPage/>
+      <video className="App--BgVideo" src={pizza} autoPlay loop muted playsInline/>
     </div>
   );
 }
