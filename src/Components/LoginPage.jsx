@@ -1,5 +1,5 @@
+import "../index.css"
 import React from "react";
-import "./LoginPage.css"
 
 export default function LoginPage(){
 
@@ -17,15 +17,18 @@ export default function LoginPage(){
     }
 
     return (
-        <div className="LoginPage">
-            <h1 className="LoginPage--Header">Idunno</h1>
-            <form onSubmit={handleSubmit} className="LoginPage--Form">
+        <div className="absolute flex flex-col my-1">
+            <h1 className="text-white self-center phone:text-3xl tablet:text-4xl laptop:text-5xl desktop:text-6xl">Idunno</h1>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center justify-items-center w-screen gap-1">
                 <input type="text" placeholder="Login" onChange={handleChange}
-                 value={loginData.login} name="login" className="LoginPage--LoginForm"></input>
+                 value={loginData.login} name="login" className="text-sm text-center phone:w-24 laptop:w-36"></input>
                 <input type="password" placeholder="Password" onChange={handleChange} value={loginData.password}
-                 name="password" className="LoginPage--PasswordForm"></input>
-                <button className="LoginPage--ButtonForm">Login</button>
+                 name="password" className="text-sm text-center phone:w-24 laptop:w-36"></input>
+                <div className="grid grid-cols-2 gap-1">
+                    <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Register</button>
+                    <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Login</button>
+                </div>
             </form>
-        </div>  
+        </div>
     )
 }

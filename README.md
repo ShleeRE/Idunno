@@ -5,5 +5,5 @@
 ## Project stack
 
 + ReactJS
-  - React-Responsive
++ Tailwind CSS
 + .NET Core Web API
