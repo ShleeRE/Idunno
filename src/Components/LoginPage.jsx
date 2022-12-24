@@ -1,34 +1,29 @@
-import "../index.css"
-import React from "react";
+import React, { Fragment } from "react";
+import pizza from "../Assets/pizza.mp4"
+import LoginForm from "./LoginForm";
 
 export default function LoginPage(){
+    const [isVideoPlaying, setIsVideoPlaying] = React.useState(true)
 
-    const [loginData, setLoginData] = React.useState({login : "", password : ""})
-
-    function handleChange(event){
-        setLoginData(prevData => {
-            let old = {...prevData, [event.target.name] : event.target.value}
-            return old
-        })
+    function handleVideo(){
+      setIsVideoPlaying(prevBoolean => !prevBoolean)
+      const vid = videoRef.current
+  
+      if(!isVideoPlaying){
+          vid.play()
+      }
+      else if(isVideoPlaying ){
+        vid.pause()
+      }
     }
+  
+    const videoRef = React.useRef(null)
 
-    function handleSubmit(event){
-        event.preventDefault()
-    }
-
-    return (
-        <div className="absolute flex flex-col my-1">
-            <h1 className="text-white self-center phone:text-3xl tablet:text-4xl laptop:text-5xl desktop:text-6xl">Idunno</h1>
-            <form onSubmit={handleSubmit} className="flex flex-col items-center justify-items-center w-screen gap-1">
-                <input type="text" placeholder="Login" onChange={handleChange}
-                 value={loginData.login} name="login" className="text-sm text-center phone:w-24 laptop:w-36"></input>
-                <input type="password" placeholder="Password" onChange={handleChange} value={loginData.password}
-                 name="password" className="text-sm text-center phone:w-24 laptop:w-36"></input>
-                <div className="grid grid-cols-2 gap-1">
-                    <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Register</button>
-                    <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Login</button>
-                </div>
-            </form>
-        </div>
+    return(
+    <Fragment>
+        <LoginForm/>
+        <button className="absolute btn btn-blue bg-amber-300 mx-1 my-1 rounded-sm text-xs w-20" onClick={handleVideo}>{isVideoPlaying ? "Stop Video" : "Play Video"}</button>
+        <video className="w-screen h-screen object-cover pointer-events-none" src={pizza} autoPlay loop muted playsInline ref={videoRef}/>
+    </Fragment>
     )
 }
