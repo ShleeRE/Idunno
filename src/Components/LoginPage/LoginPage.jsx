@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import pizza from "../Assets/pizza.mp4"
+import pizza from "../../Assets/pizza.mp4"
 import LoginForm from "./LoginForm";
 
 export default function LoginPage(){
