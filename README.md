@@ -5,6 +5,6 @@
 ## Project stack
 
 + ReactJS
-- React Router
+    - React Router
 + Tailwind CSS
 + .NET Core Web API

@@ -7,7 +7,7 @@ import SidebarItem from "./SidebarItem";
 
 export default function HBSidebar(){
     return(
-        <nav className="fixed top-0 left-0 flex flex-col">
+        <nav className="fixed top-2 left-0 flex flex-col">
             <SidebarItem text="Board" img={board}/>
             <SidebarItem text="Profile" img={profile}/>
             <SidebarItem text="Messages" img={messages}/>
