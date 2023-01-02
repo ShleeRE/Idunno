@@ -9,7 +9,7 @@ export default function Homeboard(){
     React.useEffect(()=>{
 
         async function fetchData(){
-            const response =  await fetch("https://localhost:7190/api/Posts").then(res => {
+            const response = await fetch("https://localhost:7190/api/Posts").then(res => {
                 if(!res.ok){
                     throw new Error(res.status)
                 }else{
@@ -27,7 +27,7 @@ export default function Homeboard(){
 
     console.log(posts)
     return(
-        <div className="w-screen h-full bg-orange-400">
+        <div className="w-screen h-full overflow-y-auto">
             <HBSidebar/>
             <main className="m-auto flex flex-col w-100 h-100">
                 {expPosts.length > 0 ? expPosts : null } {/*to do: no posts component*/}

@@ -19,7 +19,7 @@ export default function ExpPost(props){
     }
 
     return(
-        <article className="text-white border mb-10 w-44 m-auto">
+        <article className="text-white border mb-10 w-44 m-auto mt-1">
             <section className="flex flex-row gap-5">
                 <p>{props.title}</p>
                 <p className=" text-xs">{props.date}</p>
