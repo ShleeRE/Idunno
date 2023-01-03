@@ -1,30 +1,35 @@
 import React from "react";
 import img1 from "../../Assets/Image1.jpg"
-import img2 from "../../Assets/Image2.jpg"
-import img3 from "../../Assets/Image3.jpg"
+import img2 from "../../Assets/Image2.jpg"  
+import imgNotFound from "../../Assets/imgNotFound.jpg"
+import imgError from "../../Assets/imgError.jpg"
 
 
 export default function ExpPost(props){
 
     function getImage(){
-        if(props.postID % 3 == 0){
+        if(props.postID === 0){     // regular post received from API cannot have id === 0 or -1
+                                    // It will be used for ExpPost instanced prepared as response for not getting any posts.
+            return imgError;
+        }
+        else if(props.postID === -1){
+            return imgNotFound;
+        }
+        else if(props.postID % 3 === 0){
             return img1
         }
-        else if(props.postID % 2 == 0){
-            return img2
-        }
         else{
-            return img3
+            return img2
         }
     }
 
     return(
-        <article className="text-white border mb-10 w-44 m-auto mt-1">
+        <article className="text-white mb-10 w-44 m-auto mt-1 tablet:w-60 laptop:w-72">
             <section className="flex flex-row gap-5">
                 <p>{props.title}</p>
                 <p className=" text-xs">{props.date}</p>
             </section>
-            <img src={getImage()} className="w-44 h-44"/>
+            <img src={getImage()} className="object-cover m-auto h-44 tablet:h-60 laptop:h-72" onClick={()=>props.handleClick(props.postID)}/>
             <p>{props.description}</p>
         </article>
     )
