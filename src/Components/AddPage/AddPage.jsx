@@ -21,11 +21,11 @@ export default function AddPage(){
             body : JSON.stringify(requestBody)
         }
 
-        const response = await fetch("https://localhost:7190/api/Posts", request).then(res => {
+        await fetch("https://localhost:7190/api/Posts", request).then(res => {
                 if(!res.ok){
                     throw new Error(res.status)
                 }
-            })
+            }).catch(error => (console.log(error)))
     }
 
     function handleSubmit(event){
@@ -50,6 +50,7 @@ export default function AddPage(){
                  name="description" className="text-sm w-56 h-24 tablet:w-72 tablet:h-32 laptop:w-80 laptop:h-40"></textarea>
                 <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Add</button>
             </form>
+            <p className="text-xxs m-8 tablet:m-16 text-gray-700">*It may take a while for your post get added. Usually it is 10 seconds.</p>
         </div>
     )
 }

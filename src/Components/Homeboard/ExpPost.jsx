@@ -26,11 +26,11 @@ export default function ExpPost(props){
     return(
         <article className="text-white mb-10 w-44 m-auto mt-1 tablet:w-60 laptop:w-72">
             <section className="flex flex-row gap-5">
-                <p>{props.title}</p>
-                <p className=" text-xs">{props.date}</p>
+                <p className="m-auto">{props.title}</p>
             </section>
-            <img src={getImage()} className="object-cover m-auto h-44 tablet:h-60 laptop:h-72" onClick={()=>props.handleClick(props.postID)}/>
-            <p>{props.description}</p>
+            {props.date && <p className="text-center text-xxs tablet:text-xs">{props.date}</p>}
+            <img src={getImage()} alt="post" className="object-cover my-2 m-auto h-44 tablet:h-60 laptop:h-72" onClick={()=>props.handleClick(props.postID)}/>
+            <p className="line-clamp-5 text-center">{props.description}</p>
         </article>
     )
 }

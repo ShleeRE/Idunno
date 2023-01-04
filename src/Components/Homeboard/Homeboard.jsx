@@ -2,29 +2,42 @@ import React from "react";
 import ExpPost from "./ExpPost";
 import HBSidebar from "./HBSidebar";
 import { useNavigate } from "react-router-dom"
+import _ from "lodash";
 
 export default function Homeboard(){
 
     const[posts, setPosts] = React.useState([])
-    const[triedFetch, setTriedFetch] = React.useState(false)
+    const[apiCalls, setApiCalls] = React.useState(0)
     const navigate = useNavigate()
 
     React.useEffect(()=>{
         async function fetchData(){
-            const response = await fetch("https://localhost:7190/api/Posts").then(res => {
-                setTriedFetch(true)
+            await fetch("https://localhost:7190/api/Posts").then(res => {
                 if(!res.ok){
                     throw new Error(res.status)
                 }else{
                     return res.json()
                 }
-            }).then(data => setPosts(data))
+            }).then(data => {
+                if(!_.isEqual(posts, data)){
+                    setPosts(data)
+                }
+            })
             .catch(error => setPosts(null))
         }
 
         fetchData()
-    }, [])
 
+    }, [apiCalls])
+
+    React.useEffect(()=>{
+        const interval = setInterval(()=>{
+            setApiCalls(prevCount => prevCount+1)
+        }, 10 * 1000) // change apiCalls so useEffect will run and check if there are new posts (10 seconds for development sake)
+
+        return ()=>clearInterval(interval)
+    }, [])
+    
     function handlePostClick(postID){
         navigate(`/Posts/${postID}`)
     }
@@ -39,10 +52,13 @@ export default function Homeboard(){
     function noPostsFeedback(){
 
         if(posts === null){
-            return <ExpPost postID={-1} key={-1} title="POSTS NOT FOUND"
-            description="We were unable to receive posts. We are sorry. Please try later."/>
+            return(
+            <div className="mt-24 tablet:mt-16">
+                <ExpPost postID={-1} key={-1} title="POSTS NOT FOUND"
+                description="We were unable to receive posts. We are sorry. Please try later."/>
+            </div>)
         }
-        else if(expPosts.length === 0 && triedFetch)
+        else if(expPosts.length === 0 && apiCalls > 0)
         {
             return <ExpPost postID={0} key={0} title="NO POSTS"
                 description="There are no posts. Don't hesitate and add something new!"/>
