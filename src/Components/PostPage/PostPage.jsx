@@ -6,6 +6,7 @@ export default function PostPage(){
     const {postID} = useParams()
 
     return(
+        
         <h1>{postID}</h1>
     )
 }
