@@ -1,5 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import cfg from "../../configuration.json"
 
 export default function AddPage(){
 
@@ -21,11 +22,11 @@ export default function AddPage(){
             body : JSON.stringify(requestBody)
         }
 
-        await fetch("https://localhost:7190/api/Posts", request).then(res => {
+        await fetch(cfg.Development.API_SERVER + "Posts", request).then(res => {
                 if(!res.ok){
                     throw new Error(res.status)
                 }
-            }).catch(error => (console.log(error)))
+            }).catch()
     }
 
     function handleSubmit(event){

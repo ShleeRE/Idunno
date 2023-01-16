@@ -3,6 +3,7 @@ import ExpPost from "./ExpPost";
 import HBSidebar from "./HBSidebar";
 import { useNavigate } from "react-router-dom"
 import _ from "lodash";
+import cfg from "../../configuration.json"
 
 export default function Homeboard(){
 
@@ -12,7 +13,7 @@ export default function Homeboard(){
 
     React.useEffect(()=>{
         async function fetchData(){
-            await fetch("https://localhost:7190/api/Posts").then(res => {
+            await fetch(cfg.Development.API_SERVER + "Posts").then(res => {
                 if(!res.ok){
                     throw new Error(res.status)
                 }else{
