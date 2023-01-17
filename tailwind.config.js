@@ -26,6 +26,9 @@ module.exports = {
         "tablet" : "640px",
         "laptop" : "1024px",
         "desktop" : "1280px"
+      },
+      animation : {
+        "spin-slow" : "spin 10s linear infinite"
       }
     },
   },
