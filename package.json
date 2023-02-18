@@ -1,5 +1,5 @@
 {
-  "homepage": "http://ShleeRE.github.io/Idunno",
+  "homepage": "http://ShleeRE.github.io/Homeboard",
   "name": "idunno",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +7,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.3.3",
     "bcryptjs": "^2.4.3",
+    "dompurify": "^3.0.1",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
+    "draft-js-import-html": "^1.4.1",
+    "html-react-parser": "^3.0.10",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -18,7 +24,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set HTTPS=true&&react-scripts start",
     "predeploy": "npm run ghBuild",
     "deploy": "gh-pages -d build",
     "ghBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",

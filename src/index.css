@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  background-color: yellowgreen ;
   margin: 0;
 }
 
@@ -10,5 +11,6 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 21px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 

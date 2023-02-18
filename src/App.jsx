@@ -1,23 +1,31 @@
 import "./index.css"
-import LoginPage from "./Components/LoginPage/LoginPage"
+import LoginPage from "./Components/Pages/LoginPage/LoginPage"
 import React from "react"
-import { Routes, Route } from "react-router-dom"
-import Homeboard from "./Components/Homeboard/Homeboard";
-import AddPage from "./Components/AddPage/AddPage";
-import PostPage from "./Components/PostPage/PostPage";
+import { Routes, Route, BrowserRouter } from "react-router-dom"
+import Homeboard from "./Components/Pages/HomeboardPage/Homeboard";
+import AddPage from "./Components/Pages/AddPage/AddPage";
+import PostPage from "./Components/Pages/PostPage/PostPage";
+import HBSidebar from "Components/Pages/HomeboardPage/Sidebar/HBSidebar";
+import ProfilePage from "Components/Pages/ProfilePage/ProfilePage";
+import MessagesPage from "Components/Pages/MessagesPage/MessagesPage"
+import AuthenticationErrorPage from "Components/Pages/AuthenticationErrorPage/AuthenticationErrorPage";
 
 
 function App() {
   return (
-    <div className="w-screen h-screen bg-orange-500">
-      <Routes>
-        <Route path="/Idunno" element={<LoginPage/>}/>
-        <Route path="/Homeboard" element={<Homeboard/>}/>
-        <Route path="/Add" element={<AddPage/>}/>
-        <Route path="/Posts/:postID" element={<PostPage/>}/>
-      </Routes>
-      
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="Auth" element={<AuthenticationErrorPage/>}/>
+          <Route path="Login" element={<LoginPage/>}/>
+          <Route path="/" element={<HBSidebar/>}>
+            <Route path="/Homeboard" element={<Homeboard/>}/>
+            <Route path="/Add" element={<AddPage/>}/>
+            <Route path="/Posts/:postID" element={<PostPage/>}/>
+            <Route path="/Profile" element={<ProfilePage/>}/>
+            <Route path="/Messages" element={<MessagesPage/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
   );
 }
 

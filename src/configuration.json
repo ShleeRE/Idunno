@@ -1,9 +1,0 @@
-{
-    "Production" : {
-        
-    },
-
-    "Development" : {
-        "API_SERVER" : "https://localhost:7190/api/"
-    }
-}

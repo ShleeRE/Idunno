@@ -29,6 +29,13 @@ module.exports = {
       },
       animation : {
         "spin-slow" : "spin 10s linear infinite"
+      },
+      backgroundImage : {
+        "errorImage" : "url('Assets/error.png')",
+        "pizzaBtn" : "url('Assets/pizzaBtn.png')"
+      },
+      backgroundSize : {
+        "50" : "50%"
       }
     },
   },
