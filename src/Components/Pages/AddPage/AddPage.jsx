@@ -80,10 +80,10 @@ export default function AddPage(){
     const previewPost = {
         postTitle : getEditorTextLength(titleEditorState) > 0 ?
                              getEditorText(titleEditorState) : 
-                                    "<p style='color:grey;'><strong><em>There should be a title.</em</strong></p>",
+                                    "<p style='color:grey;'>There should be a title.</p>",
         postDescription : getEditorTextLength(descriptionEditorState) > 0 ? 
                             getEditorText(descriptionEditorState) : 
-                                    "<p style='color:grey;'><strong><em>There should be a description.</em</strong></p>"
+                                    "<p style='color:grey;'>There should be a description.</p>"
     }
 
     function responsivePopups() {
@@ -108,7 +108,7 @@ export default function AddPage(){
                     message="Description should be at least 10 characters long."/>
                 <PostTextEditor editors={editors}/>
                 <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Add</button>
-                <section className="mt-3">
+                <section className="mt-3 font-bold">
                     <PostPageContent post={previewPost}/>
                 </section>
                 
