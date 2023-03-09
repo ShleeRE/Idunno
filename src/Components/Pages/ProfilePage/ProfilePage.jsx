@@ -1,7 +1,7 @@
 export default function ProfilePage(){
     return (
         <div>
-            <p>pp</p>
+            <p>not implemented yet</p>
         </div>
     )
 }

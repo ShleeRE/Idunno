@@ -18,6 +18,8 @@ export default function PostPage(){
     return(
         <div>
            {post && <PostPageContent post={post}/>}
+            <p>Author:</p>
+            <button className="bg-blue-500 rounded-sm px-0.5 border-red-900 border-x-2 border-y-2">Ask an author</button>
         </div>
     )
 }

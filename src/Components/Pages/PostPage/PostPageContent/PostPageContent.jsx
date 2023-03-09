@@ -7,7 +7,8 @@ export default function PostPageContent({post}){
             <section className="laptop:flex justify-center items-center">
                 <img className="w-32 tablet:w-72 laptop:w-80 laptop:mr-5 m-auto laptop:m-0" src={demoImg} alt="post"/>
                 {rawHtmlToJSXWithClass(post.postDescription, "p", "w-32 text-xs xs:text-sm xs:w-48 break-words text-center m-auto laptop:m-0")}
-            </section>  
+            </section>
+            <p className="text-center text-xs xs:text-sm text-gray-500">{post.postDate}</p>
         </article>
     )
 } 

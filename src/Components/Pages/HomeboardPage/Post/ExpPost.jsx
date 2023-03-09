@@ -8,11 +8,11 @@ import { rawHtmlToJSXWithClass } from "Helpers/Utilities";
 export default function ExpPost(props){
 
     function getImage(){
-        if(props.postID === 0){     // regular post received from API cannot have id === 0 or -1
+        if(props.postId === 0){     // regular post received from API cannot have id === 0 or -1
                                     // It will be used for ExpPost instanced prepared as response for not getting any posts.
             return errorImg
         }
-        else if(props.postID === -1){
+        else if(props.postId === -1){
             return notFoundImg
         }
 

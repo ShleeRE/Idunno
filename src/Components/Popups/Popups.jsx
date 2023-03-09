@@ -42,35 +42,33 @@ const ErrorPopup = ({msg}) => {
     )
 }
 
-function switchPopup(modifierFunc, popupName, value, ms = 0){
+function switchPopup(modifierFunc, popupName, value, ms = 0){ 
     function change(){
-        modifierFunc(prevPopups => {
-            let prev = prevPopups.visiblePopups
-            prev = {...prev, [popupName] : value}
-            return {visiblePopups : prev, errorMessage : prevPopups.errorMessage}
-        })
+        return setTimeout(()=>{
+            modifierFunc(prevPopups => {
+                let prev = prevPopups.visiblePopups
+                prev = {...prev, [popupName] : value}
+                return {visiblePopups : prev, errorMessage : prevPopups.errorMessage}
+            })
+        }, ms)
     }
     
-    if(ms != 0){
-        setTimeout(()=>change(), ms)
-    }else{
-        change()
-    }
+    return change()
 }
 
 export function startWaiting(modifierFunc, ms = 0){
-    switchPopup(modifierFunc, "waitingPopup", true, ms)
+    return switchPopup(modifierFunc, "waitingPopup", true, ms)
 }
 export function endWaiting(modifierFunc, ms){
-    switchPopup(modifierFunc, "waitingPopup", false, ms)
+    return switchPopup(modifierFunc, "waitingPopup", false, ms)
 }
 
 export function startError(modifierFunc, ms){
-    switchPopup(modifierFunc, "errorPopup", true, ms)
+    return switchPopup(modifierFunc, "errorPopup", true, ms)
 }
 
 export function endError(modifierFunc, ms){
-    switchPopup(modifierFunc, "errorPopup", false, ms)
+    return switchPopup(modifierFunc, "errorPopup", false, ms)
 }
 
 export function setErrorMessage(modifierFunc, message){

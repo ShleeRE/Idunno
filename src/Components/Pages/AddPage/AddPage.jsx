@@ -83,7 +83,9 @@ export default function AddPage(){
                                     "<p style='color:grey;'>There should be a title.</p>",
         postDescription : getEditorTextLength(descriptionEditorState) > 0 ? 
                             getEditorText(descriptionEditorState) : 
-                                    "<p style='color:grey;'>There should be a description.</p>"
+                                    "<p style='color:grey;'>There should be a description.</p>",
+        postDate : new Date().toLocaleString().replaceAll(".", "-").replace(",", "").slice(0, -3) // get string -> format to database convention ->
+                                                                                                  // remove unwanted chars -> remove seconds
     }
 
     function responsivePopups() {
@@ -108,7 +110,7 @@ export default function AddPage(){
                     message="Description should be at least 10 characters long."/>
                 <PostTextEditor editors={editors}/>
                 <button className="bg-green-400 my-1 px-1.5 hover:bg-gray-500 font-medium phone:text-sm laptop:text-base">Add</button>
-                <section className="mt-3 font-bold">
+                <section className="mt-3">
                     <PostPageContent post={previewPost}/>
                 </section>
                 
