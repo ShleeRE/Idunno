@@ -6,19 +6,25 @@ import PostPageContent from "./PostPageContent/PostPageContent";
 
 export default function PostPage(){
     
-    const {postID} = useParams()
+    const {postId} = useParams()
     const [post, setPost] = React.useState()
-
+    console.log(post)
     React.useEffect(() => {
-        requestHelper.getRequest(`Posts/${postID}`)
+        requestHelper.getRequest(`Posts/${postId}`)
         .catch(()=>{})
-        .then((data)=>{setPost(data)})
+        .then((postData)=>{
+            console.log(postData)
+            requestHelper.getRequest(`Users/${postData.userId}`)
+                .catch(()=>{})
+                .then((userNameData)=>{
+                    setPost({...postData, postAuthor : userNameData})
+                })
+        })    
     }, [])
 
     return(
         <div>
            {post && <PostPageContent post={post}/>}
-            <p>Author:</p>
             <button className="bg-blue-500 rounded-sm px-0.5 border-red-900 border-x-2 border-y-2">Ask an author</button>
         </div>
     )

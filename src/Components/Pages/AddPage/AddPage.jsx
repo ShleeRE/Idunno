@@ -84,8 +84,9 @@ export default function AddPage(){
         postDescription : getEditorTextLength(descriptionEditorState) > 0 ? 
                             getEditorText(descriptionEditorState) : 
                                     "<p style='color:grey;'>There should be a description.</p>",
-        postDate : new Date().toLocaleString().replaceAll(".", "-").replace(",", "").slice(0, -3) // get string -> format to database convention ->
+        postDate : new Date().toLocaleString().replaceAll(".", "-").replace(",", "").slice(0, -3), // get string -> format to database convention ->
                                                                                                   // remove unwanted chars -> remove seconds
+        postAuthor : "You"
     }
 
     function responsivePopups() {

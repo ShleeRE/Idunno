@@ -30,7 +30,7 @@ export default function LoginForm(){
             username : loginData.username,
             password : hashedPassword
         }
-
+        console.log(credentials)
         reqHelper.postRequest("Login", credentials).catch((err)=>{
             Popups.setErrorMessage(setPopupsObj, err)
             Popups.endWaiting(setPopupsObj)
